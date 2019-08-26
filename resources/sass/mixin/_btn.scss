@@ -1,0 +1,14 @@
+$initType: normal;
+
+@mixin btn-color($type:$initType) {
+    // normal
+    @if( $type == 'normal' ){
+        color: $base0;
+        background-color: $base11;
+    }
+
+    @if( $type == 'reverse' ){
+        color: $base11;
+        background-color: $base0;
+    }
+}

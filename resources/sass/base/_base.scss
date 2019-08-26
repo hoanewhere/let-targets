@@ -1,0 +1,21 @@
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: "Hiragino Kaku Gothic Pro", Meiryo, Osaka, "MS PGothic", sans-serif;
+    font-size: 1.6rem;
+    line-height: 1.8rem;
+    font-weight: 300;
+    color: $base11;
+    background-color: $base0;
+}
+
+h1 {
+    @include font-size('xx-large');
+}
+
+h2 {
+    @include font-size('x-large');
+}
+

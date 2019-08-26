@@ -1,0 +1,91 @@
+// header
+.header {
+    &-container {
+        background-color: $base11;
+        border-bottom: 1px solid $base0;
+        display: flex;
+        justify-content: space-between;
+        text-align: center;
+    }
+    &-logo {
+    }
+    &-nav {
+        display: flex;
+        align-items: center;
+        ul {
+            display: flex;
+            flex-direction: row-reverse;
+            li {   
+                margin-right: 20px;
+                a {
+                    text-decoration: none;
+                    color: $base0;
+                    padding: 10px;
+                    border-radius: 5px;
+                }
+          }
+        }
+    }
+}
+
+
+// main
+.main {
+    // padding-top: 77px;
+    &-container {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+
+// aside
+.aside {
+    width: 30%;
+    background: $base11;
+    color: $base0;
+    max-width: 200px;
+    border-radius: 20px;
+    button {
+        @include btn-color('reverse');
+    }
+}
+
+// main-article
+.main-article {
+    width: 70%;
+    max-width: 800px;
+}
+
+// add-form
+.add-form {
+    background: $base11;
+    color: $base0;
+    border-radius: 20px;
+    button {
+        @include btn-color('reverse');
+    }
+}
+
+// targets
+.targets {
+    background: $base11;
+    color: $base0;
+    border-radius: 20px;
+}
+
+// target
+.target {
+    background-color: $base11;
+    border: 5px solid $base0;
+    border-radius: 20px;
+    &-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &-main {
+        display: flex;
+        align-items: center;
+    }
+}
