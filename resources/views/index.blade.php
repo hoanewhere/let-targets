@@ -3,20 +3,20 @@
 @section('content')
 <div class="main-container">
     <aside class="aside p-4 m-1">
-        <h2 class="mb-4">絞り込み</h2>
+        <h2 class="mb-4">{{ __('Search') }}</h2>
         <form action="">
-            <p class="mb-1">キーワード</p>
+            <p class="mb-1">{{ __('Keyword') }}</p>
                 <input type="text" name="" id="" class="mb-4 form-control">
-            <p class="mb-1">ユーザー</p>
+            <p class="mb-1">{{ __('User') }}</p>
             <select name="user" class="mb-4 custom-select">
-                <option value="0">ONLY ME</option>
-                <option value="1">>ALL</option>
+                <option value="0">{{ __('Only Me') }}</option>
+                <option value="1">>{{ __('All') }}</option>
             </select>
-            <p class="mb-1">進捗</p>
+            <p class="mb-1">{{ __('State') }}</p>
             <select name="task" class="mb-4 custom-select">
-                <option value="0">NOT YET</option>
-                <option value="1">COMPLETE</option>
-                <option value="2">>ALL</option>
+                <option value="0">{{ __('Not Yet') }}</option>
+                <option value="1">{{ __('Complete') }}</option>
+                <option value="2">>{{ __('All') }}</option>
             </select>
             <button type="submit" class="btn d-block">検索</button>
         </form>       
