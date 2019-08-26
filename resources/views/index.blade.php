@@ -18,7 +18,7 @@
                 <option value="1">{{ __('Complete') }}</option>
                 <option value="2">>{{ __('All') }}</option>
             </select>
-            <button type="submit" class="btn d-block">検索</button>
+            <button type="submit" class="btn d-block">{{ __('Search') }}</button>
         </form>       
     </aside>
     <article class="main-article m-1">
@@ -26,96 +26,32 @@
             <form action="">
                 <div class="form-row">
                     <div class="form-group col-8">
-                        <label class="mb-1">新規目標</label>
-                        <input type="text" name="" id="" class="form-control" placeholder="新規目標">
+                        <label class="mb-1">{{ __('New Target') }}</label>
+                        <input type="text" name="" id="" class="form-control" placeholder="{{ __('New Target') }}">
                     </div>
                     <div class="form-group col-4">
-                        <label class="mb-1">完了予定日</label>
+                        <label class="mb-1">{{ __('Completion Date') }}</label>
                         <input type="date" name="" id="" class="form-control">
                     </div>
                 </div>
-                <button type="submit" class="btn d-block">追加</button>
+                <button type="submit" class="btn d-block">{{ __('Add') }}</button>
             </form>
         </div>
         <div class="targets p-4">
-            <h2 class="mb-2">目標一覧</h2>
-            <div class="target m-2 p-2">
-                <div class="target-top p-2">
-                    <p>ユーザー名</p>
-                    <p>YYYY/MM/DD</p>
+            <h2 class="mb-2">{{ __('Targets') }}</h2>
+            @foreach ( $targets as $target )
+                <div class="target m-2 p-2">
+                    <div class="target-top p-2">
+                        <p>{{ $target->user->name }}</p>
+                        <p>{{ $target->completion_date }}</p>
+                    </div>
+                    <div class="target-main">
+                        <i class="fas fa-check p-2"></i>
+                        <input type="text" name="" id="" class="form-control" value="{{ $target->target }}">
+                        <i class="far fa-trash-alt p-2"></i>
+                    </div>
                 </div>
-                <div class="target-main">
-                    <i class="fas fa-check p-2"></i>
-                    <input type="text" name="" id="" class="form-control">
-                    <i class="far fa-trash-alt p-2"></i>
-                </div>
-            </div>
-            <div class="target m-2 p-2">
-                <div class="target-top p-2">
-                    <p>ユーザー名</p>
-                    <p>YYYY/MM/DD</p>
-                </div>
-                <div class="target-main">
-                    <i class="fas fa-check p-2"></i>
-                    <input type="text" name="" id="" class="form-control">
-                    <i class="far fa-trash-alt p-2"></i>
-                </div>
-            </div>
-            <div class="target m-2 p-2">
-                <div class="target-top p-2">
-                    <p>ユーザー名</p>
-                    <p>YYYY/MM/DD</p>
-                </div>
-                <div class="target-main">
-                    <i class="fas fa-check p-2"></i>
-                    <input type="text" name="" id="" class="form-control">
-                    <i class="far fa-trash-alt p-2"></i>
-                </div>
-            </div>
-            <div class="target m-2 p-2">
-                <div class="target-top p-2">
-                    <p>ユーザー名</p>
-                    <p>YYYY/MM/DD</p>
-                </div>
-                <div class="target-main">
-                    <i class="fas fa-check p-2"></i>
-                    <input type="text" name="" id="" class="form-control">
-                    <i class="far fa-trash-alt p-2"></i>
-                </div>
-            </div>
-            <div class="target m-2 p-2">
-                <div class="target-top p-2">
-                    <p>ユーザー名</p>
-                    <p>YYYY/MM/DD</p>
-                </div>
-                <div class="target-main">
-                    <i class="fas fa-check p-2"></i>
-                    <input type="text" name="" id="" class="form-control">
-                    <i class="far fa-trash-alt p-2"></i>
-                </div>
-            </div>
-            <div class="target m-2 p-2">
-                <div class="target-top p-2">
-                    <p>ユーザー名</p>
-                    <p>YYYY/MM/DD</p>
-                </div>
-                <div class="target-main">
-                    <i class="fas fa-check p-2"></i>
-                    <input type="text" name="" id="" class="form-control">
-                    <i class="far fa-trash-alt p-2"></i>
-                </div>
-            </div>
-            <div class="target m-2 p-2">
-                <div class="target-top p-2">
-                    <p>ユーザー名</p>
-                    <p>YYYY/MM/DD</p>
-                </div>
-                <div class="target-main">
-                    <i class="fas fa-check p-2"></i>
-                    <input type="text" name="" id="" class="form-control">
-                    <i class="far fa-trash-alt p-2"></i>
-                </div>
-            </div>
+            @endforeach
         </div>
     </article>
 </div>
