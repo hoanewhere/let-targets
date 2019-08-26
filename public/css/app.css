@@ -10829,27 +10829,27 @@ select {
 }
 
 html {
-  font-size: 62.5%;
+  font-size: 100%;
 }
 
 body {
   font-family: "Hiragino Kaku Gothic Pro", Meiryo, Osaka, "MS PGothic", sans-serif;
-  font-size: 1.6rem;
-  line-height: 1.8rem;
+  font-size: 1rem;
+  line-height: 1rem;
   font-weight: 300;
   color: #272a4e;
   background-color: #dad8b7;
 }
 
 h2 {
-  font-size: 3rem;
-  line-height: 3.5rem;
+  font-size: 1.8rem;
+  line-height: 2rem;
 }
 
 @media screen and (max-width: 768px) {
   h2 {
-    font-size: 2.5rem;
-    line-height: 2.8rem;
+    font-size: 1.6rem;
+    line-height: 1.8rem;
   }
 }
 
@@ -10891,7 +10891,7 @@ h2 {
   width: 30%;
   background: #272a4e;
   color: #dad8b7;
-  max-width: 200px;
+  max-width: 250px;
   border-radius: 20px;
 }
 
@@ -10902,7 +10902,7 @@ h2 {
 
 .main-article {
   width: 70%;
-  max-width: 800px;
+  max-width: 750px;
 }
 
 .add-form {

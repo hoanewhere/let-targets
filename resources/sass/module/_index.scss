@@ -44,7 +44,7 @@
     width: 30%;
     background: $base11;
     color: $base0;
-    max-width: 200px;
+    max-width: 250px;
     border-radius: 20px;
     button {
         @include btn-color('reverse');
@@ -54,7 +54,7 @@
 // main-article
 .main-article {
     width: 70%;
-    max-width: 800px;
+    max-width: 750px;
 }
 
 // add-form
