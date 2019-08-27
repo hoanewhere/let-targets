@@ -51,7 +51,7 @@
         <div class="targets p-4">
             <h2 class="mb-2">{{ __('Targets') }}</h2>
             @foreach ( $targets as $target )
-                <div class="target m-2 p-2">
+                <div class="target m-2 p-2 @if ($target->state) completed @endif ">
                     <div class="target-top p-2">
                         <p>{{ $target->user->name }}</p>
                         <p>{{ $target->completion_date }}</p>
@@ -63,7 +63,7 @@
                             <a href="{{route('target.notComplete', $target->id)}}"><i class="far fa-check-square p-2"></i></a>
                         @endif
                         <input type="text" name="" id="" class="form-control" value="{{ $target->target }}">
-                        <i class="far fa-trash-alt p-2"></i>
+                        <a href="{{route('target.delete', $target->id)}}"><i class="far fa-trash-alt p-2"></i></a>
                     </div>
                 </div>
             @endforeach

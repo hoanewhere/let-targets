@@ -10943,3 +10943,19 @@ h2 {
   color: #dad8b7;
 }
 
+.completed {
+  background-color: #5a5b6c;
+  color: #272a4e;
+  border: 5px solid #73747b;
+}
+
+.completed input {
+  border-color: #73747b;
+  background-color: #73747b;
+}
+
+.completed input,
+.completed a {
+  color: #272a4e;
+}
+

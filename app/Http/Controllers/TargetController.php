@@ -66,4 +66,19 @@ class TargetController extends Controller
 
         return redirect('/')->with('flash_message', __('NotCompleted'));
     }
+
+    public function delete($id) {
+        Log::debug('delete処理呼び出し');
+        if(!ctype_digit($id)) {
+            return redirect('index')->with('flash_message', __('Invalid operation was performed'));
+        }
+
+        $target = Target::find($id);
+        $target->fill([
+            'delete_flg' => true
+        ]);
+        $target->save();
+
+        return redirect('/')->with('flash_message', __('deleted'));
+    }
 }

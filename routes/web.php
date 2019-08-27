@@ -16,8 +16,9 @@ Auth::routes();
 // get
 Route::get('/', 'TargetController@index')->name('home');
 Route::get('/home', 'TargetController@index')->name('home');
+Route::get('/{id}/complete', 'TargetController@complete')->name('target.complete');
+Route::get('/{id}/notComplete', 'TargetController@notComplete')->name('target.notComplete');
+Route::get('/{id}/delete', 'TargetController@delete')->name('target.delete');
 
 // post
 Route::post('/add', 'TargetController@add')->name('target.add');
-Route::get('/{id}/complete', 'TargetController@complete')->name('target.complete');
-Route::get('/{id}/notComplete', 'TargetController@notComplete')->name('target.notComplete');

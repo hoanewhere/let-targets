@@ -92,3 +92,16 @@
         }
     }
 }
+
+.completed {
+    background-color: $base5;
+    color: $base11;
+    border: 5px solid $base4;
+    input {
+        border-color: $base4; 
+        background-color: $base4;
+    }
+    input, a {
+        color: $base11;
+    }
+}
