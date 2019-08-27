@@ -18,3 +18,4 @@ Route::get('/', 'TargetController@index')->name('home');
 Route::get('/home', 'TargetController@index')->name('home');
 
 // post
+Route::post('/', 'TargetController@add')->name('target.add');

@@ -23,15 +23,26 @@
     </aside>
     <article class="main-article m-1">
         <div class="add-form p-4 mb-2">
-            <form action="">
+            <form action="{{route('target.add')}}" method="POST">
+                @csrf
                 <div class="form-row">
                     <div class="form-group col-8">
                         <label class="mb-1">{{ __('New Target') }}</label>
-                        <input type="text" name="" id="" class="form-control" placeholder="{{ __('New Target') }}">
+                        <input type="text" name="target" id="target" class="form-control @error('target') is-invalid @enderror" placeholder="{{ __('New Target') }}">
+                        @error('target')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                     <div class="form-group col-4">
                         <label class="mb-1">{{ __('Completion Date') }}</label>
-                        <input type="date" name="" id="" class="form-control">
+                        <input type="date" name="completion_date" id="completion_date" class="form-control @error('completion_date') is-invalid @enderror">
+                        @error('completion_date')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                 </div>
                 <button type="submit" class="btn d-block">{{ __('Add') }}</button>
