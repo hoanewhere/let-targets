@@ -18,4 +18,6 @@ Route::get('/', 'TargetController@index')->name('home');
 Route::get('/home', 'TargetController@index')->name('home');
 
 // post
-Route::post('/', 'TargetController@add')->name('target.add');
+Route::post('/add', 'TargetController@add')->name('target.add');
+Route::get('/{id}/complete', 'TargetController@complete')->name('target.complete');
+Route::get('/{id}/notComplete', 'TargetController@notComplete')->name('target.notComplete');

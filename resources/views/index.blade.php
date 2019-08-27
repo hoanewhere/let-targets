@@ -57,7 +57,11 @@
                         <p>{{ $target->completion_date }}</p>
                     </div>
                     <div class="target-main">
-                        <i class="fas fa-check p-2"></i>
+                        @if ( !$target->state )
+                            <a href="{{route('target.complete', $target->id)}}"><i class="far fa-square p-2"></i></a>
+                        @else
+                            <a href="{{route('target.notComplete', $target->id)}}"><i class="far fa-check-square p-2"></i></a>
+                        @endif
                         <input type="text" name="" id="" class="form-control" value="{{ $target->target }}">
                         <i class="far fa-trash-alt p-2"></i>
                     </div>

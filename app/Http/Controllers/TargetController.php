@@ -36,4 +36,34 @@ class TargetController extends Controller
 
         return redirect('/')->with('flash_message', __('Added'));
     }
+
+    public function complete($id) {
+        Log::debug('complete処理呼び出し');
+        if(!ctype_digit($id)) {
+            return redirect('index')->with('flash_message', __('Invalid operation was performed'));
+        }
+
+        $target = Target::find($id);
+        $target->fill([
+            'state' => true
+        ]);
+        $target->save();
+
+        return redirect('/')->with('flash_message', __('Completed'));
+    }
+
+    public function notComplete($id) {
+        Log::debug('notComplete処理呼び出し');
+        if(!ctype_digit($id)) {
+            return redirect('index')->with('flash_message', __('Invalid operation was performed'));
+        }
+
+        $target = Target::find($id);
+        $target->fill([
+            'state' => false
+        ]);
+        $target->save();
+
+        return redirect('/')->with('flash_message', __('NotCompleted'));
+    }
 }
