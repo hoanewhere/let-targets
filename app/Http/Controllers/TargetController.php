@@ -40,7 +40,7 @@ class TargetController extends Controller
     public function complete($id) {
         Log::debug('complete処理呼び出し');
         if(!ctype_digit($id)) {
-            return redirect('index')->with('flash_message', __('Invalid operation was performed'));
+            return redirect('/')->with('flash_message', __('Invalid operation was performed'));
         }
 
         $target = Target::find($id);
@@ -55,7 +55,7 @@ class TargetController extends Controller
     public function notComplete($id) {
         Log::debug('notComplete処理呼び出し');
         if(!ctype_digit($id)) {
-            return redirect('index')->with('flash_message', __('Invalid operation was performed'));
+            return redirect('/')->with('flash_message', __('Invalid operation was performed'));
         }
 
         $target = Target::find($id);
@@ -70,7 +70,7 @@ class TargetController extends Controller
     public function delete($id) {
         Log::debug('delete処理呼び出し');
         if(!ctype_digit($id)) {
-            return redirect('index')->with('flash_message', __('Invalid operation was performed'));
+            return redirect('/')->with('flash_message', __('Invalid operation was performed'));
         }
 
         $target = Target::find($id);
