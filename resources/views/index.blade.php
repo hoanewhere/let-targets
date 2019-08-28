@@ -4,19 +4,19 @@
 <div class="main-container">
     <aside class="aside p-4 m-1">
         <h2 class="mb-4">{{ __('Search') }}</h2>
-        <form action="">
+        <form action="{{route('target.search')}}" method="GET">
             <p class="mb-1">{{ __('Keyword') }}</p>
-                <input type="text" name="" id="" class="mb-4 form-control">
+                <input type="text" name="keyword" id="keyword" class="mb-4 form-control" placeholder="検索キーワード" value="@isset ($getRequest['keyword']) {{$getRequest['keyword']}} @endisset">
             <p class="mb-1">{{ __('User') }}</p>
             <select name="user" class="mb-4 custom-select">
-                <option value="0">{{ __('Only Me') }}</option>
-                <option value="1">>{{ __('All') }}</option>
+                <option value="0" @isset ($getRequest) @if ($getRequest['user'] == 0) selected @endif @endisset>{{ __('All') }}</option>
+                <option value="1" @isset ($getRequest) @if ($getRequest['user'] == 1) selected @endif @endisset>{{ __('Only Me') }}</option>
             </select>
             <p class="mb-1">{{ __('State') }}</p>
-            <select name="task" class="mb-4 custom-select">
-                <option value="0">{{ __('Not Yet') }}</option>
-                <option value="1">{{ __('Complete') }}</option>
-                <option value="2">>{{ __('All') }}</option>
+            <select name="state" class="mb-4 custom-select">
+                <option value="0" @isset ($getRequest) @if ($getRequest['state'] == 0) selected @endif @endisset>{{ __('Not Yet') }}</option>
+                <option value="1" @isset ($getRequest) @if ($getRequest['state'] == 1) selected @endif @endisset>{{ __('Complete') }}</option>
+                <option value="2" @isset ($getRequest) @if ($getRequest['state'] == 2) selected @endif @endisset>{{ __('All State') }}</option>
             </select>
             <button type="submit" class="btn d-block">{{ __('Search') }}</button>
         </form>       

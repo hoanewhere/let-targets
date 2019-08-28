@@ -81,4 +81,32 @@ class TargetController extends Controller
 
         return redirect('/')->with('flash_message', __('deleted'));
     }
+
+    public function search( Request $request ) {
+        $request->validate([
+            'keyword' => 'string|nullable|max:255',
+            'user' => 'numeric',
+            'state' => 'numeric',
+        ]);
+
+        $user = Auth::user();
+        $getRequest = $request->all();
+        $target = Target::query();
+
+        if ( $request->keyword ) {
+            $target->where('target', $request->keyword);
+        }
+        if ( !empty($user) && $request->user ) {
+            $target->where('user_id', $user->id);
+        }
+        if ( $request->state != 2 ) {
+            $target->where('state', $request->state);
+        }
+        $targets = $target->get();
+
+        Log::debug('$targets: '.$targets);
+        Log::debug('$getRequest: '. print_r($getRequest, true));
+        Log::debug('$getRequest->keyword: '. $getRequest['keyword']);
+        return view('index', compact('targets', 'getRequest'));
+    }
 }
