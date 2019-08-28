@@ -19,7 +19,7 @@
                 <option value="2" @isset ($getRequest) @if ($getRequest['state'] == 2) selected @endif @endisset>{{ __('All State') }}</option>
             </select>
             <button type="submit" class="btn d-block">{{ __('Search') }}</button>
-        </form>       
+        </form>
     </aside>
     <article class="main-article m-1">
         <div class="add-form p-4 mb-2">
