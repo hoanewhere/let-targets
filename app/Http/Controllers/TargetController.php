@@ -12,7 +12,7 @@ class TargetController extends Controller
 {
     public function index()
     {
-        $targets = Target::all();
+        $targets = Target::where('delete_flg', false)->get();
         return view('index', compact('targets'));
     }
 
@@ -102,6 +102,7 @@ class TargetController extends Controller
         if ( $request->state != 2 ) {
             $target->where('state', $request->state);
         }
+        $target->where('delete_flg', false);
         $targets = $target->get();
 
         Log::debug('$targets: '.$targets);
