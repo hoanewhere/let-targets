@@ -6,7 +6,7 @@
         <h2 class="mb-4">{{ __('Search') }}</h2>
         <form action="{{route('target.search')}}" method="GET">
             <p class="mb-1">{{ __('Keyword') }}</p>
-                <input type="text" name="keyword" id="keyword" class="mb-4 form-control" placeholder="検索キーワード" value="@isset ($getRequest['keyword']) {{$getRequest['keyword']}} @endisset">
+                <input type="text" name="keyword" id="keyword" class="mb-4 form-control" placeholder="検索キーワード" value="@isset ($getRequest['keyword']){{$getRequest['keyword']}}@endisset">
             <p class="mb-1">{{ __('User') }}</p>
             <select name="user" class="mb-4 custom-select">
                 <option value="0" @isset ($getRequest) @if ($getRequest['user'] == 0) selected @endif @endisset>{{ __('All') }}</option>
