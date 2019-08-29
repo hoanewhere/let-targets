@@ -50,6 +50,24 @@ class TargetController extends Controller
         return $targets;
     }
 
+    public function editTarget($id, $text) {
+        Log::debug('edit処理呼び出し');
+        if(!ctype_digit($id)) {
+            return redirect('/')->with('flash_message', __('Invalid operation was performed'));
+        }
+        $target = Target::find($id);
+        Log::debug('idからレコード検索');
+        Log::debug('更新情報(target):' .$text);
+        $target->fill([
+            'target' => $text
+        ]);
+        Log::debug('該当レコードのtarget更新');
+        $target->save();
+        Log::debug('セーブ');
+
+        return 0;
+    }
+
     public function complete($id) {
         Log::debug('complete処理呼び出し');
         if(!ctype_digit($id)) {

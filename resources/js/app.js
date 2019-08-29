@@ -54,6 +54,12 @@ const app = new Vue({
                 this.new_date = ""
             })
         },
+        editTarget: function(target) {
+            axios.get('/index/editTarget/' + target.id + '/target/' + target.target)
+            .then((res) => {
+                console.log("編集完了")
+            })
+        },
         complete: function(target, event) {
             event.preventDefault();
             axios.get('/index/complete/' + target.id)
