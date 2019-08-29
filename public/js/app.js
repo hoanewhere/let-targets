@@ -49360,6 +49360,12 @@ var app = new Vue({
       axios.get('/index/notComplete/' + target.id).then(function (res) {
         target.state = false;
       });
+    },
+    deleteTarget: function deleteTarget(target, event) {
+      event.preventDefault();
+      axios.get('/index/delete/' + target.id).then(function (res) {
+        target.delete_flg = true;
+      });
     }
   }
 });

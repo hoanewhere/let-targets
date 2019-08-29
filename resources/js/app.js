@@ -67,6 +67,13 @@ const app = new Vue({
             .then((res) => {
                 target.state = false
             })
+        },
+        deleteTarget: function(target, event) {
+            event.preventDefault();
+            axios.get('/index/delete/' + target.id)
+            .then((res) => {
+                target.delete_flg = true
+            })
         }
     }
 });

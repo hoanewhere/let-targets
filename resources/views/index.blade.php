@@ -53,7 +53,8 @@
                 <div class="target m-2 p-2"
                     v-for="target in targets"
                     :key="target.id"
-                    :class="{completed: target.state}">
+                    :class="{completed: target.state}"
+                    v-if="target.delete_flg == false">
                     <div class="target-top p-2">
                         <p>@{{ target.user.name }}</p>
                         <p>@{{ target.completion_date }}</p>
@@ -62,7 +63,7 @@
                         <a v-if="target.state != true" v-on:click="complete(target, $event)" href=""><i class="far fa-square p-2"></i></a>
                         <a v-else v-on:click="notComplete(target, $event)" href=""><i class="far fa-check-square p-2"></i></a>
                         <input type="text" name="" id="" class="form-control" v-model="target.target">
-                        <a href="{{route('target.delete', "target.id")}}"><i class="far fa-trash-alt p-2"></i></a>
+                        <a v-on:click="deleteTarget(target, $event)"　href=""><i class="far fa-trash-alt p-2"></i></a>
                     </div>
                 </div>
         </div>
