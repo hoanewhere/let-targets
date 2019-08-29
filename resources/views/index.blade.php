@@ -60,10 +60,10 @@
                         <p>@{{ target.completion_date }}</p>
                     </div>
                     <div class="target-main">
-                        <a v-if="target.state != true" v-on:click="complete(target, $event)" href=""><i class="far fa-square p-2"></i></a>
-                        <a v-else v-on:click="notComplete(target, $event)" href=""><i class="far fa-check-square p-2"></i></a>
-                        <input type="text" name="" id="" class="form-control" v-model="target.target">
-                        <a v-on:click="deleteTarget(target, $event)"　href=""><i class="far fa-trash-alt p-2"></i></a>
+                        <a v-if="target.state != true" v-on:click="complete(target, $event)" href="" :class="{select_none: userJudge(target)}"><i class="far fa-square p-2"></i></a>
+                        <a v-else v-on:click="notComplete(target, $event)" href="" :class="{select_none: userJudge(target)}"><i class="far fa-check-square p-2"></i></a>
+                        <input type="text" name="" id="" class="form-control" :readonly="userJudge(target)" v-model="target.target" @keyup.enter="editTarget(target)">
+                        <a v-on:click="deleteTarget(target, $event)"　href="" :class="{select_none: userJudge(target)}"><i class="far fa-trash-alt p-2"></i></a>
                     </div>
                 </div>
         </div>

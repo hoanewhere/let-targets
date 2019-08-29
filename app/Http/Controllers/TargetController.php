@@ -23,6 +23,13 @@ class TargetController extends Controller
         return $targets;
     }
 
+    public function getUser()
+    {
+        $user = Auth::user();
+        Log::debug('$targets: '.$user);
+        return $user;
+    }
+
     public function add( Request $request ) {
         Log::debug('targets.add呼び出し');
         $request->validate([
@@ -128,7 +135,7 @@ class TargetController extends Controller
             $target->where('target', $request->keyword);
         }
         if ( !empty($user) && $request->user ) {
-            $target->where('user_id', $user->id);
+            $target->where('user_id', $request->user);
         }
         if ( $request->state != 2 ) {
             $target->where('state', $request->state);

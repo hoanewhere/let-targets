@@ -32,12 +32,18 @@ const app = new Vue({
     data: {
         targets: [],
         new_target: "",
-        new_date: ""
+        new_date: "",
+        user: []
     },
     mounted() {
         axios.get('/index/firstSearch')
         .then((res) => {
             this.targets = res.data
+
+            axios.get('/index/getUser')
+            .then((res) => {
+                this.user = res.data
+            })
         })
     },
     methods: {
@@ -80,6 +86,13 @@ const app = new Vue({
             .then((res) => {
                 target.delete_flg = true
             })
+        },
+        userJudge: function(target) {
+            if (this.user.id != target.user_id ) {
+                return true
+            } else {
+                return false
+            }
         }
     }
 });

@@ -49324,13 +49324,17 @@ var app = new Vue({
   data: {
     targets: [],
     new_target: "",
-    new_date: ""
+    new_date: "",
+    user: []
   },
   mounted: function mounted() {
     var _this = this;
 
     axios.get('/index/firstSearch').then(function (res) {
       _this.targets = res.data;
+      axios.get('/index/getUser').then(function (res) {
+        _this.user = res.data;
+      });
     });
   },
   methods: {
@@ -49347,6 +49351,11 @@ var app = new Vue({
         _this2.targets = res.data;
         _this2.new_target = "";
         _this2.new_date = "";
+      });
+    },
+    editTarget: function editTarget(target) {
+      axios.get('/index/editTarget/' + target.id + '/target/' + target.target).then(function (res) {
+        console.log("編集完了");
       });
     },
     complete: function complete(target, event) {
@@ -49366,6 +49375,13 @@ var app = new Vue({
       axios.get('/index/delete/' + target.id).then(function (res) {
         target.delete_flg = true;
       });
+    },
+    userJudge: function userJudge(target) {
+      if (this.user.id != target.user_id) {
+        return true;
+      } else {
+        return false;
+      }
     }
   }
 });
