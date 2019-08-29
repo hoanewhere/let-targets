@@ -77,7 +77,7 @@ class TargetController extends Controller
         ]);
         $target->save();
 
-        return redirect('/')->with('flash_message', __('NotCompleted'));
+        return 0;
     }
 
     public function delete($id) {

@@ -49354,6 +49354,12 @@ var app = new Vue({
       axios.get('/index/complete/' + target.id).then(function (res) {
         target.state = true;
       });
+    },
+    notComplete: function notComplete(target, event) {
+      event.preventDefault();
+      axios.get('/index/notComplete/' + target.id).then(function (res) {
+        target.state = false;
+      });
     }
   }
 });

@@ -60,6 +60,13 @@ const app = new Vue({
             .then((res) => {
                 target.state = true
             })
+        },
+        notComplete: function(target, event) {
+            event.preventDefault();
+            axios.get('/index/notComplete/' + target.id)
+            .then((res) => {
+                target.state = false
+            })
         }
     }
 });
