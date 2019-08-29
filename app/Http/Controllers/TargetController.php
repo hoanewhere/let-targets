@@ -62,7 +62,7 @@ class TargetController extends Controller
         ]);
         $target->save();
 
-        return redirect('/')->with('flash_message', __('Completed'));
+        return 0;
     }
 
     public function notComplete($id) {

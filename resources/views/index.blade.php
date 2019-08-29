@@ -59,13 +59,13 @@
                         <p>@{{ target.completion_date }}</p>
                     </div>
                     <div class="target-main">
-                        @if ( !$target->state )
-                            <a href="{{route('target.complete', $target->id)}}"><i class="far fa-square p-2"></i></a>
-                        @else
-                            <a href="{{route('target.notComplete', $target->id)}}"><i class="far fa-check-square p-2"></i></a>
-                        @endif
-                        <input type="text" name="" id="" class="form-control" value="{{ $target->target }}">
-                        <a href="{{route('target.delete', $target->id)}}"><i class="far fa-trash-alt p-2"></i></a>
+                        {{-- <i v-if="target.state != true" href="{{route('target.complete', 'target.id')}}"><i class="far fa-square p-2"></i></i> --}}
+                        
+                        <a v-if="target.state != true" v-on:click="complete(target, $event)" href=""><i class="far fa-square p-2"></i></a>
+
+                        <a v-else href="{{route('target.notComplete', "target.id")}}"><i class="far fa-check-square p-2"></i></a>
+                        <input type="text" name="" id="" class="form-control" v-model="target.target">
+                        <a href="{{route('target.delete', "target.id")}}"><i class="far fa-trash-alt p-2"></i></a>
                     </div>
                 </div>
         </div>

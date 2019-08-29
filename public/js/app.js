@@ -49326,9 +49326,16 @@ var app = new Vue({
     new_target: "",
     new_date: ""
   },
+  mounted: function mounted() {
+    var _this = this;
+
+    axios.get('/index/firstSearch').then(function (res) {
+      _this.targets = res.data;
+    });
+  },
   methods: {
     addTarget: function addTarget() {
-      var _this = this;
+      var _this2 = this;
 
       axios.post('/index/add', {
         target: this.new_target,
@@ -49337,9 +49344,15 @@ var app = new Vue({
         // TBD: バリデーションチェックしてtargetsを更新する処理を追加する
         console.log("ajaxのレスポンス:");
         console.log(res);
-        _this.targets = res.data;
-        _this.new_target = "";
-        _this.new_date = "";
+        _this2.targets = res.data;
+        _this2.new_target = "";
+        _this2.new_date = "";
+      });
+    },
+    complete: function complete(target, event) {
+      event.preventDefault();
+      axios.get('/index/complete/' + target.id).then(function (res) {
+        target.state = true;
       });
     }
   }

@@ -53,6 +53,13 @@ const app = new Vue({
                 this.new_target = ""
                 this.new_date = ""
             })
+        },
+        complete: function(target, event) {
+            event.preventDefault();
+            axios.get('/index/complete/' + target.id)
+            .then((res) => {
+                target.state = true
+            })
         }
     }
 });

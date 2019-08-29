@@ -16,10 +16,11 @@ Auth::routes();
 // get
 Route::get('/', 'TargetController@index')->name('home');
 Route::get('/home', 'TargetController@index')->name('home');
-Route::get('/index/{id}/complete', 'TargetController@complete')->name('target.complete');
-Route::get('/index/{id}/notComplete', 'TargetController@notComplete')->name('target.notComplete');
+Route::get('/index/complete/{id}', 'TargetController@complete')->name('target.complete');
+Route::get('/index/notComplete/{id}', 'TargetController@notComplete')->name('target.notComplete');
 Route::get('/index/{id}/delete', 'TargetController@delete')->name('target.delete');
 Route::get('/index/search', 'TargetController@search')->name('target.search');
+Route::get('/index/firstSearch', 'TargetController@firstSearch')->name('target.firstSearch');
 
 // post
 Route::post('/index/add', 'TargetController@add')->name('target.add');
