@@ -10923,6 +10923,10 @@ h2 {
   border-radius: 20px;
 }
 
+.targets .select_none {
+  pointer-events: none;
+}
+
 .target {
   background-color: #272a4e;
   border: 5px solid #dad8b7;

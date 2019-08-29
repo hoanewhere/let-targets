@@ -73,6 +73,9 @@
     background: $base11;
     color: $base0;
     border-radius: 20px;
+    .select_none {
+        pointer-events: none;
+    }
 }
 
 // target
