@@ -12,8 +12,15 @@ class TargetController extends Controller
 {
     public function index()
     {
-        $targets = Target::where('delete_flg', false)->get();
-        return view('index', compact('targets'));
+        return view('index');
+    }
+
+    public function firstSearch()
+    {
+        // TBD: 最初の検索条件が決まったらここも修正
+        $targets = Target::with('user')->where('delete_flg', false)->get();
+        Log::debug('$targets: '.$targets);
+        return $targets;
     }
 
     public function add( Request $request ) {

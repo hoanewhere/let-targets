@@ -34,6 +34,12 @@ const app = new Vue({
         new_target: "",
         new_date: ""
     },
+    mounted() {
+        axios.get('/index/firstSearch')
+        .then((res) => {
+            this.targets = res.data
+        })
+    },
     methods: {
         addTarget: function() {
             axios.post('/index/add', {

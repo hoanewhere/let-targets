@@ -50,11 +50,13 @@
         </div>
         <div class="targets p-4">
             <h2 class="mb-2">{{ __('Targets') }}</h2>
-            @foreach ( $targets as $target )
-                <div class="target m-2 p-2 @if ($target->state) completed @endif ">
+                <div class="target m-2 p-2"
+                    v-for="target in targets"
+                    :key="target.id"
+                    :class="{completed: target.state}">
                     <div class="target-top p-2">
-                        <p>{{ $target->user->name }}</p>
-                        <p>{{ $target->completion_date }}</p>
+                        <p>@{{ target.user.name }}</p>
+                        <p>@{{ target.completion_date }}</p>
                     </div>
                     <div class="target-main">
                         @if ( !$target->state )
@@ -66,7 +68,6 @@
                         <a href="{{route('target.delete', $target->id)}}"><i class="far fa-trash-alt p-2"></i></a>
                     </div>
                 </div>
-            @endforeach
         </div>
     </article>
 </div>
