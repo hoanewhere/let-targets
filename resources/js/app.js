@@ -19,7 +19,7 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('index-component', require('./components/IndexComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -28,5 +28,25 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  */
 
 const app = new Vue({
-    el: '#app',
+    el: '#index',
+    data: {
+        targets: [],
+        new_target: "",
+        new_date: ""
+    },
+    methods: {
+        addTarget: function() {
+            axios.post('/index/add', {
+                target: this.new_target,
+                completion_date: this.new_date
+            }).then((res) => {
+                // TBD: バリデーションチェックしてtargetsを更新する処理を追加する
+                console.log("ajaxのレスポンス:")
+                console.log(res)
+                this.targets = res.data
+                this.new_target = ""
+                this.new_date = ""
+            })
+        }
+    }
 });

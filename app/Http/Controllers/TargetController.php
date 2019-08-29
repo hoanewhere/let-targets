@@ -24,9 +24,10 @@ class TargetController extends Controller
         ]);
 
         Log::debug('$request: '.$request);
-
         $user = Auth::user();
         $target = New Target();
+
+        // データを追加
         $target->fill([
             'target' => $request->target,
             'completion_date' => $request->completion_date,
@@ -34,7 +35,12 @@ class TargetController extends Controller
         ]);
         $target->save();
 
-        return redirect('/')->with('flash_message', __('Added'));
+        // 更新後、表示する分のデータを取得
+        // TBD: セッションに保存した検索条件でデータを取得する
+        $targets = Target::where('delete_flg', false)->get();
+        Log::debug('$targets: '.$targets);
+
+        return $targets;
     }
 
     public function complete($id) {

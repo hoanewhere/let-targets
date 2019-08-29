@@ -22,4 +22,4 @@ Route::get('/index/{id}/delete', 'TargetController@delete')->name('target.delete
 Route::get('/index/search', 'TargetController@search')->name('target.search');
 
 // post
-Route::post('/add', 'TargetController@add')->name('target.add');
+Route::post('/index/add', 'TargetController@add')->name('target.add');
