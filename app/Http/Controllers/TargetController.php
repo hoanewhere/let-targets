@@ -51,7 +51,7 @@ class TargetController extends Controller
 
         // 更新後、表示する分のデータを取得
         // TBD: セッションに保存した検索条件でデータを取得する
-        $targets = Target::where('delete_flg', false)->get();
+        $targets = Target::with('user')->where('delete_flg', false)->get();
         Log::debug('$targets: '.$targets);
 
         return $targets;
