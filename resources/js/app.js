@@ -38,7 +38,7 @@ Vue.component('target-component', {
                 <a v-on:click="deleteTarget(tar, $event)"　href="" :class="{select_none: userJudge(tar)}"><i class="far fa-trash-alt p-2"></i></a>
             </div>
         </div>
-    <transition name="fade">`,
+    </transition>`,
     methods: {
         editTarget: function(target) {
             axios.get('/index/editTarget/' + target.id + '/target/' + target.target)
