@@ -18,7 +18,7 @@ class TargetController extends Controller
     public function firstSearch()
     {
         // TBD: 最初の検索条件が決まったらここも修正
-        $targets = Target::with('user')->where('delete_flg', false)->get();
+        $targets = Target::with('user')->where('delete_flg', false)->orderby('completion_date', 'asc')->get();
         Log::debug('$targets: '.$targets);
         return $targets;
     }
@@ -51,7 +51,7 @@ class TargetController extends Controller
 
         // 更新後、表示する分のデータを取得
         // TBD: セッションに保存した検索条件でデータを取得する
-        $targets = Target::with('user')->where('delete_flg', false)->get();
+        $targets = Target::with('user')->where('delete_flg', false)->orderby('completion_date', 'asc')->get();
         Log::debug('$targets: '.$targets);
 
         return $targets;
@@ -144,7 +144,7 @@ class TargetController extends Controller
             $target->where('state', $request->state);
         }
         $target->where('delete_flg', false);
-        $targets = $target->get();
+        $targets = $target->orderby('completion_date', 'asc')->get();
 
         Log::debug('検索後の$targets: '.$targets);
         return $targets;
