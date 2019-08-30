@@ -20,7 +20,7 @@ Route::get('/index/complete/{id}', 'TargetController@complete')->name('target.co
 Route::get('/index/notComplete/{id}', 'TargetController@notComplete')->name('target.notComplete');
 Route::get('/index/delete/{id}', 'TargetController@delete')->name('target.delete');
 Route::get('/index/editTarget/{id}/target/{text}', 'TargetController@editTarget')->name('target.edit');
-Route::get('/index/search', 'TargetController@search')->name('target.search');
+Route::get('/index/search/{user}/{state}/{text?}', 'TargetController@search')->name('target.search');
 Route::get('/index/firstSearch', 'TargetController@firstSearch')->name('target.firstSearch');
 Route::get('/index/getUser', 'TargetController@getUser')->name('target.getUser');
 

@@ -49325,7 +49325,10 @@ var app = new Vue({
     targets: [],
     new_target: "",
     new_date: "",
-    user: []
+    user: [],
+    search_target: "",
+    search_user: 0,
+    search_state: 2
   },
   mounted: function mounted() {
     var _this = this;
@@ -49356,6 +49359,15 @@ var app = new Vue({
     editTarget: function editTarget(target) {
       axios.get('/index/editTarget/' + target.id + '/target/' + target.target).then(function (res) {
         console.log("編集完了");
+      });
+    },
+    searchTarget: function searchTarget() {
+      var _this3 = this;
+
+      axios.get('/index/search/' + this.search_user + '/' + this.search_state + '/' + this.search_target).then(function (res) {
+        console.log("ajaxのレスポンス:");
+        console.log(res);
+        _this3.targets = res.data;
       });
     },
     complete: function complete(target, event) {

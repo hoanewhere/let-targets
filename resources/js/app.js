@@ -33,7 +33,10 @@ const app = new Vue({
         targets: [],
         new_target: "",
         new_date: "",
-        user: []
+        user: [],
+        search_target: "",
+        search_user: 0,
+        search_state: 2,
     },
     mounted() {
         axios.get('/index/firstSearch')
@@ -64,6 +67,14 @@ const app = new Vue({
             axios.get('/index/editTarget/' + target.id + '/target/' + target.target)
             .then((res) => {
                 console.log("編集完了")
+            })
+        },
+        searchTarget: function() {
+            axios.get('/index/search/' + this.search_user + '/' + this.search_state + '/' + this.search_target)
+            .then((res) => {
+                console.log("ajaxのレスポンス:")
+                console.log(res)
+                this.targets = res.data
             })
         },
         complete: function(target, event) {

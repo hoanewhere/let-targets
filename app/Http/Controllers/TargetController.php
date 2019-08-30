@@ -121,18 +121,21 @@ class TargetController extends Controller
     }
 
     public function search( Request $request ) {
+        Log::debug('search時の$request: '.$request);
+        Log::debug('$request->user: '.$request->user);
+        Log::debug('$request->state: '.$request->state);
+        Log::debug('$request->text: '.$request->text);
         $request->validate([
-            'keyword' => 'string|nullable|max:255',
             'user' => 'numeric',
             'state' => 'numeric',
+            'text' => 'string|nullable|max:255',
         ]);
 
         $user = Auth::user();
-        $getRequest = $request->all();
-        $target = Target::query();
+        $target = Target::with('user');
 
-        if ( $request->keyword ) {
-            $target->where('target', $request->keyword);
+        if ( $request->text ) {
+            $target->where('target', 'like', "%{$request->text}%");
         }
         if ( !empty($user) && $request->user ) {
             $target->where('user_id', $request->user);
@@ -143,9 +146,7 @@ class TargetController extends Controller
         $target->where('delete_flg', false);
         $targets = $target->get();
 
-        Log::debug('$targets: '.$targets);
-        Log::debug('$getRequest: '. print_r($getRequest, true));
-        Log::debug('$getRequest->keyword: '. $getRequest['keyword']);
-        return view('index', compact('targets', 'getRequest'));
+        Log::debug('検索後の$targets: '.$targets);
+        return $targets;
     }
 }
