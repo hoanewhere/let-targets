@@ -51,22 +51,12 @@
         </div>
         <div class="targets p-4">
             <h2 class="mb-2">{{ __('Targets') }}</h2>
-                <div class="target m-2 p-2"
-                    v-for="target in targets"
-                    :key="target.id"
-                    :class="{completed: target.state}"
-                    v-if="target.delete_flg == false">
-                    <div class="target-top p-2">
-                        <p>@{{ target.user.name }}</p>
-                        <p>@{{ target.completion_date }}</p>
-                    </div>
-                    <div class="target-main">
-                        <a v-if="target.state != true" v-on:click="complete(target, $event)" href="" :class="{select_none: userJudge(target)}"><i class="far fa-square p-2"></i></a>
-                        <a v-else v-on:click="notComplete(target, $event)" href="" :class="{select_none: userJudge(target)}"><i class="far fa-check-square p-2"></i></a>
-                        <input type="text" name="edit" id="edit" class="form-control" :readonly="userJudge(target)" v-model="target.target" @keyup.enter="editTarget(target)">
-                        <a v-on:click="deleteTarget(target, $event)"　href="" :class="{select_none: userJudge(target)}"><i class="far fa-trash-alt p-2"></i></a>
-                    </div>
-                </div>
+            <target-component
+                v-for="target in targets"
+                :tar="target"
+                :login_id="user.id"
+                :key="target.id"
+            ></target-component>
         </div>
     </article>
 </div>
