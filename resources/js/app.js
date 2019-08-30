@@ -23,6 +23,7 @@ window.Vue = require('vue');
 Vue.component('target-component', {
     props: ['tar', 'login_id'],
     template: `
+    <transition name="slide-fade" appear>
         <div class="target m-2 p-2"
             :class="{completed: tar.state}"
             v-if="tar.delete_flg == false">
@@ -36,7 +37,8 @@ Vue.component('target-component', {
                 <input type="text" name="edit" id="edit" class="form-control" :readonly="userJudge(tar)" v-model="tar.target" @keyup.enter="editTarget(tar)">
                 <a v-on:click="deleteTarget(tar, $event)"　href="" :class="{select_none: userJudge(tar)}"><i class="far fa-trash-alt p-2"></i></a>
             </div>
-        </div>`,
+        </div>
+    <transition name="fade">`,
     methods: {
         editTarget: function(target) {
             axios.get('/index/editTarget/' + target.id + '/target/' + target.target)
