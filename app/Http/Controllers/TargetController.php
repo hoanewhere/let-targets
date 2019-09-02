@@ -138,7 +138,7 @@ class TargetController extends Controller
             $target->where('target', 'like', "%{$request->text}%");
         }
         if ( !empty($user) && $request->user ) {
-            $target->where('user_id', $request->user);
+            $target->where('user_id', $user->id);
         }
         if ( $request->state != 2 ) {
             $target->where('state', $request->state);
